@@ -1,0 +1,240 @@
+.hamburgerContainer {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.hamburgerButton {
+  display: inline-block;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1001;
+  position: relative;
+}
+
+.hamburgerButton:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+.hamburgerBox {
+  width: 24px;
+  height: 18px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburgerInner {
+  display: block;
+  top: 50%;
+  margin-top: -1.5px;
+}
+
+.hamburgerInner,
+.hamburgerInner::before,
+.hamburgerInner::after {
+  width: 24px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+.hamburgerInner::before,
+.hamburgerInner::after {
+  content: "";
+  display: block;
+}
+
+.hamburgerInner::before {
+  top: -8px;
+}
+
+.hamburgerInner::after {
+  bottom: -8px;
+}
+
+/* Transform to X when open */
+.hamburgerButton.open .hamburgerInner {
+  transform: rotate(45deg);
+}
+
+.hamburgerButton.open .hamburgerInner::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.hamburgerButton.open .hamburgerInner::after {
+  bottom: 0;
+  transform: rotate(90deg);
+}
+
+/* Menu Overlay */
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.menuOverlay.closing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+.menuContent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%);
+  animation: slideIn 0.3s ease forwards;
+  overflow-y: auto;
+}
+
+.menuContent.closing {
+  animation: slideOut 0.3s ease forwards;
+}
+
+.nav {
+  padding: 80px 0 20px 0;
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuList li {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.menuList li:last-child {
+  border-bottom: none;
+}
+
+.menuList a {
+  display: block;
+  padding: 16px 24px;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.menuList a:hover {
+  background: #f8f9fa;
+  color: #007bff;
+  padding-left: 32px;
+}
+
+.logoutButton {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #dc3545;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+  background: #f8f9fa;
+  padding-left: 32px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .menuContent {
+    width: 100vw;
+  }
+  
+  .hamburgerContainer {
+    top: 15px;
+    left: 15px;
+  }
+  
+  .hamburgerButton {
+    padding: 10px;
+  }
+  
+  .hamburgerBox {
+    width: 20px;
+    height: 16px;
+  }
+  
+  .hamburgerInner,
+  .hamburgerInner::before,
+  .hamburgerInner::after {
+    width: 20px;
+    height: 2px;
+  }
+  
+  .hamburgerInner::before {
+    top: -6px;
+  }
+  
+  .hamburgerInner::after {
+    bottom: -6px;
+  }
+} 

@@ -1,0 +1,362 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.title {
+  color: white;
+  text-align: center;
+  margin: 20px 0 30px 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.matchesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.matchCard {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+  min-height: 400px; /* Ensure consistent height */
+}
+
+.matchCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+.matchCard__avatar {
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  position: relative;
+  overflow: hidden;
+}
+
+.matchCard__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.onlineIndicator {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.online {
+  background-color: #44b700;
+}
+
+.offline {
+  background-color: #bdbdbd;
+}
+
+.matchCard__info {
+  padding: 15px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.matchCard__info h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.matchCard__info p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.matchCard__details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.matchCard__basicInfo {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.matchCard__about {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  padding: 10px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #667eea;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.matchCard__chatButton {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.matchCard__chatButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+}
+
+.matchCard__chatButton:active {
+  transform: translateY(0);
+}
+
+.matchCard__badge {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 8px 45px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.matchCard__badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
+}
+
+.matchCard__badge:active {
+  transform: translateY(0);
+}
+
+.disconnectButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #ff4444;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.disconnectButton:hover {
+  background: #ff4444;
+  color: white;
+  transform: scale(1.1);
+}
+
+.noMatches {
+  text-align: center;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 6px 15px rgba(0, 0, 0, 0.08);
+  animation: slideUp 0.6s ease-out;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noMatches h2 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.noMatches p {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loading,
+.error {
+  text-align: center;
+  color: white;
+  padding: 20px;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #ff4444;
+}
+
+/* Confirmation Dialog */
+.confirmDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.confirmDialog__content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.confirmDialog__content h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.confirmDialog__content p {
+  margin: 0 0 25px 0;
+  color: #666;
+}
+
+.confirmDialog__buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.confirmDialog__button_confirm,
+.confirmDialog__button_cancel {
+  padding: 12px 25px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.confirmDialog__button_confirm {
+  background: #ff4444;
+  color: white;
+}
+
+.confirmDialog__button_confirm:hover {
+  background: #ff2020;
+  transform: translateY(-2px);
+}
+
+.confirmDialog__button_cancel {
+  background: #eee;
+  color: #333;
+}
+
+.confirmDialog__button_cancel:hover {
+  background: #ddd;
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .matchesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin: 15px 0 20px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .matchesGrid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}

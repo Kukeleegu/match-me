@@ -1,0 +1,614 @@
+.container {
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content area that centers everything */
+.userGrid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 15px;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.userCard {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 6px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 400px;
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+}
+
+.userCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18), 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.userCard__image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.userCard__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.userCard:hover .userCard__image img {
+    transform: scale(1.05);
+}
+
+.matchScore {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.5), 0 3px 8px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.userCard__content {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.userCard__name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.userCard__text {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.userCard__about {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.interest {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4), 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+}
+
+.actionButton {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1), 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.actionButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.likeButton {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+}
+
+.likeButton:hover {
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4), 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.passButton {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+    color: white;
+}
+
+.passButton:hover {
+    box-shadow: 0 8px 20px rgba(244, 67, 54, 0.4), 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Buttons Container - Inside the card */
+.navigationButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    transition: border-color 0.3s ease;
+}
+
+/* Navigation Button Variants */
+.navButton__previous {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.navButton__previous:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(244, 67, 54, 0.4);
+}
+
+.navButton__next {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.navButton__next:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+}
+
+.navButton__previous:disabled,
+.navButton__next:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.pageInfo {
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.noUsers {
+    text-align: center;
+    padding: 30px 20px;
+    background: white;
+    border-radius: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 6px 15px rgba(0, 0, 0, 0.08);
+    animation: slideUp 0.6s ease-out;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.noUsers h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.noUsers p {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(255, 107, 107, 0.4), 0 6px 15px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.6s ease-out;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Swipe animations */
+@keyframes swipeRightAnimation {
+    0% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(120%) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+@keyframes swipeLeftAnimation {
+    0% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-120%) rotate(-15deg);
+        opacity: 0;
+    }
+}
+
+.userCard__swipeRight {
+    animation: swipeRightAnimation 0.5s ease-out forwards;
+}
+
+.userCard__swipeLeft {
+    animation: swipeLeftAnimation 0.5s ease-out forwards;
+}
+
+/* Button states during animation */
+.userCard__swipeRight .likeButton {
+    background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(76, 175, 80, 0.6), 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.userCard__swipeLeft .passButton {
+    background: linear-gradient(135deg, #ef5350 0%, #f44336 100%);
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(244, 67, 54, 0.6), 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Make border less obvious during animations */
+.userCard__swipeRight .navigationButtons,
+.userCard__swipeLeft .navigationButtons {
+    border-top-color: rgba(0, 0, 0, 0.03);
+}
+
+.userCard__entrance .navigationButtons {
+    border-top-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Entrance animation for new users */
+@keyframes enterUserAnimation {
+    0% {
+        transform: translateY(30px) scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.userCard__entrance {
+    animation: enterUserAnimation 0.5s ease-out both;
+}
+
+/* User Card Animation States */
+.userCard__hidden {
+    opacity: 0 !important;
+    transform: scale(0.9);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Force hide card during loading states */
+.userCard__loading {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .userGrid {
+        padding: 0 15px;
+        gap: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .userCard {
+        max-width: 100%;
+        max-height: calc(100vh - 80px);
+    }
+    
+    .userCard:hover {
+        transform: none;
+    }
+    
+    .userCard__image {
+        height: 200px;
+    }
+    
+    .userCard__content {
+        padding: 15px;
+    }
+    
+    .navigationButtons {
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 12px;
+    }
+    
+    .navButton__previous,
+    .navButton__next {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .noUsers, .error {
+        margin: 10px;
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+    
+    .userGrid {
+        padding: 0 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .userCard {
+        max-height: calc(100vh - 60px);
+    }
+    
+    .userCard__image {
+        height: 180px;
+    }
+    
+    .userCard__content {
+        padding: 12px;
+    }
+    
+    .userCard__name {
+        font-size: 1.2rem;
+    }
+    
+    .actions {
+        gap: 6px;
+    }
+    
+    .actionButton {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .navButton__previous,
+    .navButton__next {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Match Details Styles */
+.matchDetails {
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 4px solid #667eea;
+}
+
+.matchDetails__title {
+    color: #667eea;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.matchDetails__text {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Floating Action Buttons */
+.floatingButtons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.floatingButton {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.floatingButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.floatingButton:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.floatingButton:hover::before {
+    left: 100%;
+}
+
+.floatingButton:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Mobile responsiveness for floating buttons */
+@media (max-width: 768px) {
+    .floatingButtons {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+    }
+    
+    .floatingButton {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floatingButtons {
+        bottom: 15px;
+        right: 15px;
+        gap: 10px;
+    }
+    
+    .floatingButton {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
